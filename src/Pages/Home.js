@@ -1,33 +1,34 @@
-
-import React, { useEffect, useState } from 'react';
-import Navbar from '../Navbar';
+import React, { useEffect, useState } from "react";
+import Navbar from "../components/Navbar";
+import Intro from "../components/Canvas/Intro";
+import Skill from "../components/Canvas/Skill";
 
 const HomePage = (props) => {
-    const [res, setRes] = useState(100);
+  const [res, setRes] = useState(100);
 
-    useEffect(() => {
-        fetch('/optimize').then(res => res.json()).then(data => {
-            // let w = ""
-            // for (const [key, value] of Object.entries(data.weight)) {
-            //   w = w.concat(`${key}: ${value}\n`)
-            // }
-            // setRes(w)
-            setRes(data.weight)
-        })
-    }, []);
+  useEffect(() => {
+    fetch("/optimize")
+      .then((res) => res.json())
+      .then((data) => {
+        setRes(data.weight);
+      });
+  }, []);
 
-    return (
-        <div>
-            <Navbar />
-            <h1>Home Page: check Weight?</h1>
-            {Object.keys(res).map((key, index) => {
-                return (
-                    <h3 key={key}>{key}: {res[key]}</h3>
-                )
-            })
-            }
-        </div>
-    );
+  return (
+    <div>
+      <Navbar />
+      <h1>Home Page: check Weight?</h1>
+			<div className="dark-mode">
+			<Intro/>
+			<Intro/> 
+			<Intro/> 
+			<Intro/> 
+			<Intro/> 
+			<Skill/>
+			</div>
+
+    </div>
+  );
 };
 
 export default HomePage;

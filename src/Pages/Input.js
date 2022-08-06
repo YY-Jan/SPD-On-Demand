@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import InputStructure from "../components/inputStructure";
-import Navbar from "../Navbar";
+import InputStructure from "../components/Input/inputStructure";
+import Navbar from "../components/Navbar";
 
 const InputPage = (props) => {
-  const [res, setRes] = useState(100);
 
   return (
     <>
