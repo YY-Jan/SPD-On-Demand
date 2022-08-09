@@ -1,13 +1,14 @@
 import {  useEffect, useState } from "react";
-import Navbar from "../Navbar";
 import "./Tab.css";
 
-import { infoDefaults, inputsInfos  } from "../../constant/structureInfo";
+import { infoDefaults, inputsInfos, materials  } from "../../constant/structureInfo";
+import { allVariables } from "../../constant/variables";
 import FirstRequest from "../request/first";
 import InputTab from "../../Tabs/InputTab";
 import ResultTab from "../../Tabs/ResultTab";
 import DCRTab from "../../Tabs/DCRTab";
 
+import Header from "../Header/Header";
 const [tabInput,tabWeight, dcrTab] = [1,2,3]
 
 const Tabs = () => {
@@ -24,40 +25,54 @@ const Tabs = () => {
 
   const handleCheck = (e) => {
     e.preventDefault();
-    const checkedData = new FormData(e.target);
-    const inputObject = Object.fromEntries(checkedData.entries())
-    var tmp = Object()
-    inputsInfos.forEach( (v)=> {
-      tmp[v.name] = inputObject[v.name]
-    })
-    setValues(tmp);
-    setValues(inputObject);
-    console.log(values);
-    console.log(weight)
-    console.log(dimension)
+    // const checkedData = new FormData(e.target);
+    // const inputObject = Object.fromEntries(checkedData.entries())
+    // var tmp = Object()
+    // const inputs = inputsInfos.concat(materials)
+    // inputs.forEach( (v)=> {
+    //   tmp[v.name] = inputObject[v.name]
+    // })
+    // setValues(tmp);
+    // setValues(inputObject);
+    // console.log(values);
+    // console.log(weight)
+    // console.log(dimension)
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await FirstRequest(values).then((res) => {
+    
+    const checkedData = new FormData(e.target);
+    const inputObject = Object.fromEntries(checkedData.entries())
+    const inputs = inputsInfos.concat(materials)
+    var tmp = Object()
+    inputs.forEach( (v)=> {
+      tmp[v.name] = inputObject[v.name]
+    })
+    // setValues(inputObject);
+    setValues(tmp);
+    console.log(values);
+
+    console.log(inputObject)
+    var limits = Object()
+    allVariables.forEach( (v)=> {
+      limits[v.name+"_min"] = inputObject[v.name+"_min"]
+      limits[v.name+"_max"] = inputObject[v.name+"_max"]
+    })
+    console.log(limits)
+
+    await FirstRequest({values:tmp, limits}).then((res) => {
     setWeights(res.weight);
     setDimension(res.dimensions);
     setDelta(res.delta);
     setDCR(res.DCR);
   })
-
-    // setWeights();
-    // setWeights(await FirstRequest(values).then((res) => res.weight));
   };
-
-  // useEffect(()=>{
-  //   console.log(weight)
-  // },[weight])
 
   return (
     <>
-      <Navbar />
-      <div className="container">
+    <Header/>
+      <div className="tab-container">
         <div className="bloc-tabs">
           <button
             className={tabState === tabInput ? "tabs active-tabs" : "tabs"}

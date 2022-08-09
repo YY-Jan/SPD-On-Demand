@@ -9,10 +9,10 @@ var config = {
     data: {'Vyl':600, 'Vyu':720,}
 }
 
-const FirstRequest = async (values) => {
+const FirstRequest = async ({values, limits}) => {
     var data = {weight: 0}
     try {
-        config = {...config, data: {...config.data, ...values}}
+        config = {...config, data: {values, limits}}
         const res = await axios(config);
         data = res.data
         console.log(data);

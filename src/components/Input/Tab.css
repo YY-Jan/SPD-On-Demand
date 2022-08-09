@@ -11,14 +11,14 @@ body {
   background: #fff;
 }
 
-.container {
+.tab-container {
   display: flex;
   flex-direction: column;
   position: relative;
   width: 95%;
-  height: 680px;
+  height: 90%;
   background: #f1f1f1;
-  margin: 10px auto 0;
+  margin: 100px auto 0;
   word-break: break-all;
   border: 1px solid rgba(0, 0, 0, 0.274);
 }
@@ -64,6 +64,7 @@ button {
 }
 .content-tabs {
   flex-grow: 1;
+  
 }
 .content {
   background: white;

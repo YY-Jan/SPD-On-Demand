@@ -1,11 +1,10 @@
-@import "../../constant/globalColor";
+@import "../../constant/_globalColor.scss";
 
 .dark-mode {
   background-color: $darkBackground;
   color: white;
   transition: "0.1s";
 }
-
 
 .main {
   width: 90%;
@@ -15,9 +14,10 @@
 }
 .greet-main {
   width: 90%;
+  height: 30rem;
   padding: 20px 10px;
   margin: 0px auto;
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
 .greeting-main {
@@ -44,7 +44,7 @@
 .greeting-text {
   font-size: 70px;
   line-height: 1.1;
-  color: $textColor !important;
+  // color: $textColor !important;
 }
 
 .greeting-text-p {
@@ -57,6 +57,7 @@
   height: auto;
 }
 
+
 .wave-emoji {
   animation-duration: 1.8s;
   animation-iteration-count: infinite;
@@ -64,6 +65,7 @@
   display: inline-block;
   transform-origin: 70% 70%;
 }
+
 
 @keyframes wave {
   0% {
@@ -88,6 +90,7 @@
     transform: rotate(0deg);
   }
 }
+
 
 /* Media Query */
 @media (max-width: 1380px) {
