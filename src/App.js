@@ -1,8 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import HomePage from './Pages/Home';
-import Tabs from './components/Input/Tabs';
+import logo from "./logo.svg";
+import "./App.css";
+import { HashRouter, Route, Routes } from "react-router-dom";
+import HomePage from "./Pages/Home";
+import Tabs from "./components/Input/Tabs";
 
 const App = () => {
   return (
@@ -22,17 +22,17 @@ const App = () => {
     //     </a>
     //     <p>Run Me -{'>'} {res}</p>
     //   </header>
-      <>
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+    // basename={process.env.PUBLIC_URL}
+    <>
+      <HashRouter basename="/">
         <Routes>
-        <Route exact path="/" element={<HomePage/>} />
-        <Route exact path="/tabs" element={<Tabs/>} />
+          <Route exact path="/tabs" element={<Tabs />} />
+          <Route exact path="/" element={<HomePage />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </>
     // </div>
-    
   );
-}
+};
 
 export default App;
