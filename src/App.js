@@ -23,7 +23,7 @@ const App = () => {
     //     <p>Run Me -{'>'} {res}</p>
     //   </header>
       <>
-      <BrowserRouter >
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
         <Route exact path="/" element={<HomePage/>} />
         <Route exact path="/tabs" element={<Tabs/>} />
