@@ -1,4 +1,3 @@
-// import logo from '/SPD.png';
 import weights from "../constant/weights";
 import {
   beamVariables,
@@ -53,7 +52,7 @@ const ResultTab = (props) => {
     <div className="w-full grid grid-cols-6 gap-3 place-items-center">
       {createTable("weight", weights, weight, colors.emerald, 2, 1)}
       {createTable("delta ", DELTAS, delta, colors.amber, 2, 1)}
-      <img src="/SPD.png" className="object-contain h-60 w-48" alt="..." />
+      <img src="./SPD.png" className="object-contain h-60 w-48" alt="SPD" />
       {createTable("beam ", beamVariables, dimension, colors.sky, 2, 1)}
       {createTable("lower SPD", lowerSPDVariables, dimension, colors.sky, 2, 1)}
       {createTable("upper SPD", upperSPDVariables, dimension, colors.sky, 2, 1)}
